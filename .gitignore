@@ -1,0 +1,56 @@
+# ============================================================
+# 被动元件财报问答知识库 · 忽略清单
+# 原则：密钥绝不入库；原始 PDF / 索引 / 中间产物不入库（原因见 README）；
+#       outputs/ 只保留成品报告。
+# ============================================================
+
+# —— 密钥与本地配置（绝不入库）——
+.env
+.env.*
+*.env
+*.key
+*.pem
+
+# —— 原始年报 PDF（约 149 MB，版权归各公司，见 README）——
+data/raw/
+
+# —— 向量 + BM25 索引（约 66 MB，可由复现链路的第 6、7 步重建）——
+data/clean/index/
+
+# —— 中间产物（可由 data/clean/text/ 几分钟内重建）——
+data/clean/chunks/
+data/clean/text_raw/
+
+# —— 运行日志、排障文件、PDF 排版中间件 ——
+logs/
+*.log
+
+# —— outputs/ 只保留成品：一页结论 + 逐题测试记录 + 问答页面截图 ——
+# （今日汇报、docx 原件等属本地工作记录；若也要收录，在下面追加 ! 行即可）
+outputs/*
+!outputs/一页结论.md
+!outputs/一页结论.pdf
+!outputs/逐题测试记录.md
+!outputs/qa_page_screenshot_*.png
+
+# —— 模型权重（下载在仓库外，见 README）——
+*.safetensors
+*.bin
+*.pt
+*.pth
+*.onnx
+*.gguf
+
+# —— Python ——
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# —— 杂项 ——
+*.bak
+Thumbs.db
+Desktop.ini
+.DS_Store
